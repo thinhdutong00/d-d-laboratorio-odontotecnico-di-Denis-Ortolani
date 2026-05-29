@@ -7,6 +7,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { CoursesPage } from "./pages/CoursesPage";
 import { DigitalFlowPage } from "./pages/DigitalFlowPage";
 import { HomePage } from "./pages/HomePage";
+import { BookingPage } from "./pages/BookingPage";
 import { ServicePage } from "./pages/ServicePage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { TrainingEveningsPage } from "./pages/TrainingEveningsPage";
@@ -35,6 +36,7 @@ export function App() {
         <Route path="/serate-formative" element={<TrainingEveningsPage />} />
         <Route path="/su-di-noi" element={<AboutPage />} />
         <Route path="/contatti" element={<ContactPage />} />
+        <Route path="/prenota-ora" element={<BookingPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

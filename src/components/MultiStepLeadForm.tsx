@@ -6,6 +6,7 @@ type LeadFormProps = {
   service?: ServiceConfig;
   compact?: boolean;
   title?: string;
+  fullscreen?: boolean;
 };
 
 type LeadState = {
@@ -55,7 +56,7 @@ const getBusinessDays = () => {
   return days;
 };
 
-export function MultiStepLeadForm({ service, compact = false, title }: LeadFormProps) {
+export function MultiStepLeadForm({ service, compact = false, title, fullscreen = false }: LeadFormProps) {
   const [step, setStep] = useState(1);
   const [lead, setLead] = useState<LeadState>(() => ({
     ...emptyLead,
@@ -132,7 +133,7 @@ export function MultiStepLeadForm({ service, compact = false, title }: LeadFormP
 
   return (
     <form
-      className={`lead-form ${compact ? "lead-form--compact" : ""}`}
+      className={`lead-form ${compact ? "lead-form--compact" : ""} ${fullscreen ? "lead-form--fullscreen" : ""}`}
       onSubmit={(event) => {
         event.preventDefault();
         void submit();
@@ -142,7 +143,7 @@ export function MultiStepLeadForm({ service, compact = false, title }: LeadFormP
       <div className="form-head">
         <span className="eyebrow">
           <CalendarDays size={16} />
-          Preventivo tecnico
+          Prenotazione tecnica
         </span>
         <h2>{title ?? `Richiedi una valutazione${service ? ` per ${service.shortTitle}` : ""}`}</h2>
         <p>Compila il quadro iniziale: D&D ti ricontattera per definire tempi, materiale e lavorazione.</p>

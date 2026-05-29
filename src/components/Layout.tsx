@@ -20,6 +20,10 @@ export function Layout({ children }: { children: ReactNode }) {
     setIsOpen(false);
   }, [location.pathname]);
 
+  if (location.pathname === "/prenota-ora") {
+    return <main id="main">{children}</main>;
+  }
+
   return (
     <>
       <a className="skip-link" href="#main">
@@ -74,8 +78,8 @@ export function Layout({ children }: { children: ReactNode }) {
             <Link className="icon-btn" to="/lavorazioni-odontotecniche" aria-label="Cerca una lavorazione">
               <Search size={20} />
             </Link>
-            <Link className="btn btn-primary nav-cta" to="/contatti">
-              Preventivo
+            <Link className="btn btn-primary nav-cta" to="/prenota-ora">
+              Prenota Ora
             </Link>
             <button
               className="menu-toggle"
@@ -114,6 +118,9 @@ export function Layout({ children }: { children: ReactNode }) {
               <Phone size={17} />
               Chiama laboratorio
             </a>
+            <Link className="btn btn-primary" to="/prenota-ora">
+              Prenota Ora
+            </Link>
           </div>
         </div>
       </header>
@@ -127,8 +134,8 @@ export function Layout({ children }: { children: ReactNode }) {
               <span className="eyebrow">Partner tecnico per studi dentistici</span>
               <h2>Porta il prossimo caso in laboratorio con un quadro chiaro.</h2>
             </div>
-            <Link className="btn btn-accent" to="/contatti">
-              Richiedi preventivo
+            <Link className="btn btn-accent" to="/prenota-ora">
+              Prenota Ora
             </Link>
           </div>
         </section>
@@ -170,8 +177,8 @@ export function Layout({ children }: { children: ReactNode }) {
         <a className="btn btn-outline" href={SITE_CONFIG.telHref}>
           Chiama
         </a>
-        <Link className="btn btn-primary" to="/contatti">
-          Preventivo
+        <Link className="btn btn-primary" to="/prenota-ora">
+          Prenota Ora
         </Link>
       </div>
     </>
