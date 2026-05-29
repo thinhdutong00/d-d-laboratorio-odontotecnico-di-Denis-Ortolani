@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { RevealEffects } from "./components/RevealEffects";
 import { AboutPage } from "./pages/AboutPage";
 import { ContactPage } from "./pages/ContactPage";
 import { CoursesPage } from "./pages/CoursesPage";
@@ -24,6 +25,7 @@ export function App() {
   return (
     <Layout>
       <ScrollToTop />
+      <RevealEffects />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/lavorazioni-odontotecniche" element={<ServicesPage />} />
