@@ -14,7 +14,7 @@ export function ServicePage() {
   return (
     <>
       <section className="service-hero">
-        <img src={service.heroImage} alt="" />
+        <img src={service.heroImage} alt="" loading="eager" decoding="async" />
         <div className="wrap service-hero__grid">
           <div>
             <span className="eyebrow">Lavorazione odontotecnica</span>

@@ -20,7 +20,7 @@ export function DigitalFlowPage() {
               Invia file da valutare
             </Link>
           </div>
-          <img src={SITE_CONFIG.digitalImage} alt="Flusso digitale D&D" />
+          <img src={SITE_CONFIG.digitalImage} alt="Flusso digitale D&D" loading="eager" decoding="async" />
         </div>
       </section>
 

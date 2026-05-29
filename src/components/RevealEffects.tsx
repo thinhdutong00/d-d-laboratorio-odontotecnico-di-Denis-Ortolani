@@ -56,6 +56,11 @@ const revealGroups: RevealGroup[] = [
     stagger: 90,
     maxDelay: 270,
   },
+  {
+    selector: ".booking-intro .eyebrow, .booking-intro h1, .booking-intro p, .booking-proof span, .booking-form-shell",
+    stagger: 80,
+    maxDelay: 320,
+  },
 ];
 
 export function RevealEffects() {
@@ -63,31 +68,6 @@ export function RevealEffects() {
 
   useLayoutEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const revealMap = new Map<HTMLElement, number>();
-
-    revealGroups.forEach(({ selector, baseDelay = 0, stagger = 0, maxDelay = 0 }) => {
-      document.querySelectorAll<HTMLElement>(selector).forEach((element, index) => {
-        const delay = baseDelay + Math.min(index * stagger, maxDelay);
-        const currentDelay = revealMap.get(element);
-        revealMap.set(element, currentDelay === undefined ? delay : Math.min(currentDelay, delay));
-      });
-    });
-
-    const elements = Array.from(revealMap.keys()).filter(
-      (element) => !element.closest(".mobile-cta") && !element.closest(".site-header"),
-    );
-
-    elements.forEach((element) => {
-      element.classList.add("reveal");
-      element.style.setProperty("--reveal-delay", `${revealMap.get(element) ?? 0}ms`);
-      if (reducedMotion) element.classList.add("is-visible");
-    });
-
-    if (reducedMotion || !("IntersectionObserver" in window)) {
-      elements.forEach((element) => element.classList.add("is-visible"));
-      return;
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -101,10 +81,54 @@ export function RevealEffects() {
         rootMargin: "0px 0px -20px",
       },
     );
+    const observed = new WeakSet<HTMLElement>();
 
-    elements.forEach((element) => observer.observe(element));
+    const applyReveal = () => {
+      const revealMap = new Map<HTMLElement, number>();
 
-    return () => observer.disconnect();
+      revealGroups.forEach(({ selector, baseDelay = 0, stagger = 0, maxDelay = 0 }) => {
+        document.querySelectorAll<HTMLElement>(selector).forEach((element, index) => {
+          const delay = baseDelay + Math.min(index * stagger, maxDelay);
+          const currentDelay = revealMap.get(element);
+          revealMap.set(element, currentDelay === undefined ? delay : Math.min(currentDelay, delay));
+        });
+      });
+
+      const elements = Array.from(revealMap.keys()).filter(
+        (element) => !element.closest(".mobile-cta") && !element.closest(".site-header"),
+      );
+
+      elements.forEach((element) => {
+        element.classList.add("reveal");
+        element.style.setProperty("--reveal-delay", `${revealMap.get(element) ?? 0}ms`);
+
+        if (reducedMotion || !("IntersectionObserver" in window)) {
+          element.classList.add("is-visible");
+          return;
+        }
+
+        if (!observed.has(element)) {
+          observed.add(element);
+          observer.observe(element);
+        }
+      });
+    };
+
+    applyReveal();
+    const rafId = window.requestAnimationFrame(applyReveal);
+    const timeoutId = window.setTimeout(applyReveal, 120);
+    const mutationObserver = new MutationObserver(applyReveal);
+    mutationObserver.observe(document.getElementById("main") ?? document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(timeoutId);
+      mutationObserver.disconnect();
+      observer.disconnect();
+    };
   }, [location.pathname]);
 
   return null;

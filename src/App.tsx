@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { RevealEffects } from "./components/RevealEffects";
+import { SeoManager } from "./components/SeoManager";
 import { AboutPage } from "./pages/AboutPage";
+import { BookingPage } from "./pages/BookingPage";
 import { ContactPage } from "./pages/ContactPage";
 import { CoursesPage } from "./pages/CoursesPage";
 import { DigitalFlowPage } from "./pages/DigitalFlowPage";
 import { HomePage } from "./pages/HomePage";
-import { BookingPage } from "./pages/BookingPage";
 import { ServicePage } from "./pages/ServicePage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { TrainingEveningsPage } from "./pages/TrainingEveningsPage";
@@ -26,6 +27,7 @@ export function App() {
   return (
     <Layout>
       <ScrollToTop />
+      <SeoManager />
       <RevealEffects />
       <Routes>
         <Route path="/" element={<HomePage />} />

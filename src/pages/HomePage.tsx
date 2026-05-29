@@ -4,11 +4,26 @@ import { ArrowRight, BadgeCheck, Clock3, Cpu, GraduationCap } from "lucide-react
 import { MultiStepLeadForm } from "../components/MultiStepLeadForm";
 import { SERVICES, SITE_CONFIG } from "../data/site";
 
+const withImageWidth = (url: string, width: number) => url.replace(/([?&])width=\d+/, `$1width=${width}`);
+const imageSrcSet = (url: string, widths: number[]) =>
+  widths.map((width) => `${withImageWidth(url, width)} ${width}w`).join(", ");
+const heroImage = "/images/hero-lab-1100.jpg";
+const heroSrcSet = "/images/hero-lab-760.jpg 760w, /images/hero-lab-1100.jpg 1100w, /images/hero-lab-1400.jpg 1400w";
+
 export function HomePage() {
   return (
     <>
       <section className="hero hero--home">
-        <img className="hero-bg" src={SITE_CONFIG.heroImage} alt="" />
+        <img
+          className="hero-bg"
+          src={heroImage}
+          srcSet={heroSrcSet}
+          sizes="100vw"
+          alt=""
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className="hero-overlay" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
@@ -48,7 +63,14 @@ export function HomePage() {
         <div className="wrap service-grid">
           {SERVICES.map((service) => (
             <Link className="service-card" key={service.slug} to={`/lavorazioni-odontotecniche/${service.slug}`}>
-              <img src={service.heroImage} alt="" />
+              <img
+                src={service.heroImage}
+                srcSet={imageSrcSet(service.heroImage, [480, 760, 1100, 1400])}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 1120px) calc(50vw - 32px), 370px"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
               <div>
                 <h3>{service.title}</h3>
                 <p>{service.excerpt}</p>

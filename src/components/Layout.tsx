@@ -44,8 +44,8 @@ export function Layout({ children }: { children: ReactNode }) {
 
       <header className="site-header">
         <div className="wrap nav">
-          <Link className="brand" to="/" aria-label="D&D Laboratorio home">
-            <img src={SITE_CONFIG.logoUrl} alt="D&D Laboratorio" />
+          <Link className="brand" to="/">
+            <img src={SITE_CONFIG.logoUrl} alt="" width="64" height="64" decoding="async" />
             <span>
               <strong>D&D</strong>
               Laboratorio
@@ -141,7 +141,15 @@ export function Layout({ children }: { children: ReactNode }) {
         </section>
         <div className="wrap footer-main">
           <div>
-            <img className="footer-logo" src={SITE_CONFIG.logoUrl} alt="D&D Laboratorio" />
+            <img
+              className="footer-logo"
+              src={SITE_CONFIG.logoUrl}
+              alt="D&D Laboratorio"
+              width="96"
+              height="96"
+              loading="lazy"
+              decoding="async"
+            />
             <p>
               Laboratorio odontotecnico a Gambettola, specializzato in lavorazioni analogiche e
               digitali, produzione protesica e formazione per professionisti.

@@ -462,7 +462,7 @@ export const defaultFormConfig = {
     "Flusso digitale o file da valutare",
   ],
   goalOptions: [
-    "Richiedere un preventivo",
+    "Prenotare una valutazione",
     "Confronto tecnico sul caso",
     "Organizzare tempi e consegna",
     "Ricevere supporto sul flusso digitale",

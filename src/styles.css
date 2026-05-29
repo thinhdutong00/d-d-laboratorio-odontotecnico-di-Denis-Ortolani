@@ -21,6 +21,7 @@
 }
 
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
@@ -28,7 +29,7 @@ body {
   margin: 0;
   color: var(--text);
   background: var(--paper);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.58;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -110,18 +111,18 @@ a {
   top: 16px;
 }
 
+.route-loader {
+  min-height: 55vh;
+}
+
 .reveal {
   opacity: 0;
-  transform: translateY(-36px);
-  transition:
-    opacity 0.6s ease var(--reveal-delay, 0ms),
-    transform 0.6s ease var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
+  transition: opacity 0.6s ease var(--reveal-delay, 0ms);
+  will-change: opacity;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .topbar {
@@ -688,13 +689,13 @@ a {
 }
 
 .lead-form--fullscreen .form-head h2 {
-  font-size: clamp(2rem, 6vw, 3.1rem);
+  font-size: 3.1rem;
   line-height: 1.02;
 }
 
 .lead-form--fullscreen .form-head p {
   max-width: 680px;
-  font-size: clamp(1rem, 2.2vw, 1.18rem);
+  font-size: 1.18rem;
   line-height: 1.35;
 }
 
@@ -979,6 +980,10 @@ textarea:focus,
   color: var(--paper);
 }
 
+.site-footer .btn-accent {
+  color: var(--brand-dark);
+}
+
 .footer-cta {
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
@@ -1057,17 +1062,17 @@ textarea:focus,
   padding: 0;
   color: inherit;
   background: transparent;
-  font-size: clamp(1.25rem, 4vw, 2rem);
+  font-size: 2rem;
   font-weight: 500;
   letter-spacing: 0;
 }
 
 .booking-screen {
-  width: min(980px, calc(100% - clamp(28px, 8vw, 96px)));
+  width: min(1520px, calc(100% - clamp(32px, 5vw, 96px)));
   min-height: calc(100svh - 92px);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(380px, 1fr);
+  grid-template-columns: minmax(420px, 0.82fr) minmax(520px, 1fr);
   gap: clamp(2rem, 6vw, 5rem);
   align-items: start;
   padding-block: clamp(2.2rem, 6vw, 5rem);
@@ -1080,7 +1085,7 @@ textarea:focus,
 
 .booking-intro h1 {
   max-width: 640px;
-  font-size: clamp(2.8rem, 5vw, 4.7rem);
+  font-size: 4.7rem;
   line-height: 0.98;
 }
 
@@ -1088,7 +1093,7 @@ textarea:focus,
   max-width: 580px;
   margin-top: 1.35rem;
   color: #2f2927;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: 1.35rem;
   line-height: 1.35;
 }
 
@@ -1113,9 +1118,24 @@ textarea:focus,
 
 .booking-form-shell {
   min-width: 0;
+  max-width: 680px;
+}
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 17px;
+  }
+
+  .wrap {
+    width: min(1320px, calc(100% - 64px));
+  }
 }
 
 @media (max-width: 1120px) {
+  html {
+    font-size: 15.75px;
+  }
+
   h1 {
     font-size: 3.35rem;
   }
@@ -1223,14 +1243,32 @@ textarea:focus,
 
   .booking-screen {
     grid-template-columns: 1fr;
+    width: min(760px, calc(100% - 40px));
   }
 
   .booking-intro {
     position: static;
   }
+
+  .booking-intro h1 {
+    font-size: 3.45rem;
+  }
+
+  .booking-intro p,
+  .lead-form--fullscreen .form-head p {
+    font-size: 1.08rem;
+  }
+
+  .lead-form--fullscreen .form-head h2 {
+    font-size: 2.5rem;
+  }
 }
 
 @media (max-width: 720px) {
+  html {
+    font-size: 15.5px;
+  }
+
   body {
     padding-bottom: 84px;
   }
@@ -1359,6 +1397,10 @@ textarea:focus,
     padding-inline: 1rem;
   }
 
+  .booking-appbar button {
+    font-size: 1.55rem;
+  }
+
   .booking-screen {
     width: min(100% - 32px, 680px);
     min-height: calc(100svh - 92px);
@@ -1367,11 +1409,15 @@ textarea:focus,
   }
 
   .booking-intro h1 {
-    font-size: clamp(2.2rem, 11vw, 3.1rem);
+    font-size: 2.72rem;
   }
 
   .booking-intro p {
-    font-size: 1.08rem;
+    font-size: 1.04rem;
+  }
+
+  .lead-form--fullscreen .form-head h2 {
+    font-size: 2.05rem;
   }
 
   .booking-proof {
@@ -1391,7 +1437,6 @@ textarea:focus,
 
   .reveal {
     opacity: 1;
-    transform: none;
   }
 }
 

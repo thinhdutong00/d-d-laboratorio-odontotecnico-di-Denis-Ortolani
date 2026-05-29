@@ -15,7 +15,7 @@ export function AboutPage() {
               e sala corsi al piano superiore.
             </p>
           </div>
-          <img src={SITE_CONFIG.labImage} alt="Laboratorio D&D a Gambettola" />
+          <img src={SITE_CONFIG.labImage} alt="Laboratorio D&D a Gambettola" loading="eager" decoding="async" />
         </div>
       </section>
 

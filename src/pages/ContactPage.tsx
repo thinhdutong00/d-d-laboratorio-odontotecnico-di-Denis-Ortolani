@@ -9,7 +9,7 @@ export function ContactPage() {
         <div className="wrap page-hero__inner">
           <div>
             <span className="eyebrow">Contatti</span>
-            <h1>Contatta D&D per un preventivo o un confronto tecnico.</h1>
+            <h1>Contatta D&D per prenotare un confronto tecnico.</h1>
             <p>
               Raccogliamo il quadro iniziale della richiesta e rendiamo piu semplice il primo
               contatto tra studio e laboratorio.

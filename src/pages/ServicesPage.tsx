@@ -16,7 +16,7 @@ export function ServicesPage() {
               scheletrati, faccette, protesi implantare e abutment personalizzati.
             </p>
           </div>
-          <img src={SITE_CONFIG.labImage} alt="Laboratorio D&D" />
+          <img src={SITE_CONFIG.labImage} alt="Laboratorio D&D" loading="eager" decoding="async" />
         </div>
       </section>
 
@@ -24,7 +24,7 @@ export function ServicesPage() {
         <div className="wrap service-grid service-grid--wide">
           {SERVICES.map((service) => (
             <Link className="service-card" key={service.slug} to={`/lavorazioni-odontotecniche/${service.slug}`}>
-              <img src={service.heroImage} alt="" />
+              <img src={service.heroImage} alt="" loading="lazy" decoding="async" />
               <div>
                 <h2>{service.title}</h2>
                 <p>{service.excerpt}</p>

@@ -149,7 +149,14 @@ export function MultiStepLeadForm({ service, compact = false, title, fullscreen 
         <p>Compila il quadro iniziale: D&D ti ricontattera per definire tempi, materiale e lavorazione.</p>
       </div>
 
-      <div className="progress" aria-label={`Step ${step} di ${totalSteps}`}>
+      <div
+        className="progress"
+        role="progressbar"
+        aria-label={`Step ${step} di ${totalSteps}`}
+        aria-valuemin={1}
+        aria-valuemax={totalSteps}
+        aria-valuenow={step}
+      >
         {Array.from({ length: totalSteps }, (_, index) => (
           <span key={index} className={index < step ? "is-active" : ""} />
         ))}
