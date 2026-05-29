@@ -45,7 +45,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <header className="site-header">
         <div className="wrap nav">
           <Link className="brand" to="/">
-            <img src={SITE_CONFIG.logoUrl} alt="" width="64" height="64" decoding="async" />
+            <img src={SITE_CONFIG.logoUrl} alt="" width="64" height="64" fetchPriority="high" decoding="async" />
             <span>
               <strong>D&D</strong>
               Laboratorio

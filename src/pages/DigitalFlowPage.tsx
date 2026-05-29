@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { Cpu, FileCheck2, TimerReset } from "lucide-react";
 import { MultiStepLeadForm } from "../components/MultiStepLeadForm";
-import { SITE_CONFIG } from "../data/site";
+
+const digitalHeroSrc = "/images/digital-lab-1100.jpg";
+const digitalHeroSrcSet =
+  "/images/digital-lab-760.jpg 760w, /images/digital-lab-1100.jpg 1100w, /images/digital-lab-1400.jpg 1400w";
 
 export function DigitalFlowPage() {
   return (
@@ -20,7 +23,17 @@ export function DigitalFlowPage() {
               Invia file da valutare
             </Link>
           </div>
-          <img src={SITE_CONFIG.digitalImage} alt="Flusso digitale D&D" loading="eager" decoding="async" />
+          <img
+            src={digitalHeroSrc}
+            srcSet={digitalHeroSrcSet}
+            sizes="(max-width: 720px) calc(100vw - 28px), 520px"
+            alt="Flusso digitale D&D"
+            width="760"
+            height="570"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
         </div>
       </section>
 

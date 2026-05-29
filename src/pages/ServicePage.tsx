@@ -3,6 +3,10 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { MultiStepLeadForm } from "../components/MultiStepLeadForm";
 import { findService, SERVICES } from "../data/site";
 
+const withImageWidth = (url: string, width: number) => url.replace(/([?&])width=\d+/, `$1width=${width}`);
+const imageSrcSet = (url: string, widths: number[]) =>
+  widths.map((width) => `${withImageWidth(url, width)} ${width}w`).join(", ");
+
 export function ServicePage() {
   const { slug } = useParams();
   const service = findService(slug);
@@ -14,7 +18,15 @@ export function ServicePage() {
   return (
     <>
       <section className="service-hero">
-        <img src={service.heroImage} alt="" loading="eager" decoding="async" />
+        <img
+          src={service.heroImage}
+          srcSet={imageSrcSet(service.heroImage, [760, 1100, 1400])}
+          sizes="100vw"
+          alt=""
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className="wrap service-hero__grid">
           <div>
             <span className="eyebrow">Lavorazione odontotecnica</span>

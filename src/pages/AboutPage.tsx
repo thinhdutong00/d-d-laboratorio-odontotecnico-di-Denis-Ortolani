@@ -1,5 +1,7 @@
 import { BadgeCheck, Building2, UsersRound } from "lucide-react";
-import { SITE_CONFIG } from "../data/site";
+
+const labHeroSrc = "/images/lab-1100.jpg";
+const labHeroSrcSet = "/images/lab-760.jpg 760w, /images/lab-1100.jpg 1100w, /images/lab-1400.jpg 1400w";
 
 export function AboutPage() {
   return (
@@ -15,7 +17,17 @@ export function AboutPage() {
               e sala corsi al piano superiore.
             </p>
           </div>
-          <img src={SITE_CONFIG.labImage} alt="Laboratorio D&D a Gambettola" loading="eager" decoding="async" />
+          <img
+            src={labHeroSrc}
+            srcSet={labHeroSrcSet}
+            sizes="(max-width: 720px) calc(100vw - 28px), 520px"
+            alt="Laboratorio D&D a Gambettola"
+            width="760"
+            height="570"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
         </div>
       </section>
 

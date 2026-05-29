@@ -29,9 +29,8 @@ export const SITE_CONFIG = {
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=Via%20Lorenzini%20Ezio%20119%2047035%20Gambettola%20FC",
   logoUrl:
-    "https://dedlaboratorio.com/cdn/shop/files/LOGO_NUOVO.png?v=1680640570&width=500",
-  faviconUrl:
-    "https://dedlaboratorio.com/cdn/shop/files/Progetto_senza_titolo_1.png?crop=center&height=64&v=1683058796&width=64",
+    "/images/logo-dd-128.png",
+  faviconUrl: "/images/logo-dd-128.png",
   heroImage:
     "https://dedlaboratorio.com/cdn/shop/files/d_d.jpg?v=1680610409&width=1800",
   labImage:

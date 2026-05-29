@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { MultiStepLeadForm } from "../components/MultiStepLeadForm";
-import { SERVICES, SITE_CONFIG } from "../data/site";
+import { SERVICES } from "../data/site";
+
+const labHeroSrc = "/images/lab-1100.jpg";
+const labHeroSrcSet = "/images/lab-760.jpg 760w, /images/lab-1100.jpg 1100w, /images/lab-1400.jpg 1400w";
+
+const withImageWidth = (url: string, width: number) => url.replace(/([?&])width=\d+/, `$1width=${width}`);
+const imageSrcSet = (url: string, widths: number[]) =>
+  widths.map((width) => `${withImageWidth(url, width)} ${width}w`).join(", ");
 
 export function ServicesPage() {
   return (
@@ -16,7 +23,17 @@ export function ServicesPage() {
               scheletrati, faccette, protesi implantare e abutment personalizzati.
             </p>
           </div>
-          <img src={SITE_CONFIG.labImage} alt="Laboratorio D&D" loading="eager" decoding="async" />
+          <img
+            src={labHeroSrc}
+            srcSet={labHeroSrcSet}
+            sizes="(max-width: 720px) calc(100vw - 28px), 520px"
+            alt="Laboratorio D&D"
+            width="760"
+            height="570"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
         </div>
       </section>
 
@@ -24,7 +41,14 @@ export function ServicesPage() {
         <div className="wrap service-grid service-grid--wide">
           {SERVICES.map((service) => (
             <Link className="service-card" key={service.slug} to={`/lavorazioni-odontotecniche/${service.slug}`}>
-              <img src={service.heroImage} alt="" loading="lazy" decoding="async" />
+              <img
+                src={service.heroImage}
+                srcSet={imageSrcSet(service.heroImage, [480, 760, 1100, 1400])}
+                sizes="(max-width: 720px) calc(100vw - 30px), (max-width: 1120px) calc(50vw - 32px), 370px"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
               <div>
                 <h2>{service.title}</h2>
                 <p>{service.excerpt}</p>
